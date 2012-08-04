@@ -8,6 +8,6 @@ import _env
 from web.contrib.template import render_jinja
 
 render = render_jinja(
-    'temlates', 
+    'template', 
     encoding = 'utf-8',
 )

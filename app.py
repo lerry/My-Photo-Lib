@@ -16,7 +16,7 @@ app = web.application(urls, globals())
 
 class index:
     def GET(self, name=''):
-        return 'Hello, %s'%name
+        return render.index(name=name)
 
 if __name__ == '__main__':
     app.run()
