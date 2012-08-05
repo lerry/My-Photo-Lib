@@ -9,14 +9,20 @@ import web
 from config import render
 
 urls = (
-    '/(.*)', 'index',
+    '/', 'index',
+    '/page', 'page',
 )
 
 app = web.application(urls, globals())
 
-class index:
+class Index:
     def GET(self, name=''):
         return render.index(name=name)
+
+class Page:
+    def GET(self):
+        return render.page()
+        
 
 if __name__ == '__main__':
     app.run()

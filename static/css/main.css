@@ -1,7 +1,8 @@
 body {
-    background-image: url(/static/img/bg.png);
+    background-image: url("/static/img/bg.png");
 }
 
 #title {
     color: #000;
+    margin-top: 50px;    
 }
