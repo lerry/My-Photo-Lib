@@ -27,5 +27,6 @@ def resize_img(img_path, save_path, size=[640,480], quality=90):
     img.save(save_path, 'RGB', quality=quality)
     
             
-print scan_folder('/home/lerry/Dropbox')
+if __name__ == '__main__':
+    print scan_folder('/home/lerry/Dropbox')
 

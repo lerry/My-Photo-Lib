@@ -6,6 +6,7 @@ Start from 2012-08-04 16:03
 '''
 import _env
 import os
+from os.path import join
 from web.contrib.template import render_jinja
 
 render = render_jinja(
@@ -19,7 +20,9 @@ img_type = (
         'png',
         'gif',
 )
-
+pwd = _env.PWD
 img_root = '/home/lerry/Dropbox'
+cache_dir = join(pwd, 'cache')
 
-cache_dir = os.path.join(_env.PWD, 'cache')
+db_file = join(pwd, 'img.db')
+db_table = join(pwd, 'img_list')
