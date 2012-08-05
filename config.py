@@ -20,6 +20,6 @@ img_type = (
         'gif',
 )
 
-img_root = 'E:\\temp'
+img_root = '/home/lerry/Dropbox'
 
 cache_dir = os.path.join(_env.PWD, 'cache')
