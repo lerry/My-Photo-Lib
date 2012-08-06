@@ -23,8 +23,8 @@ img_type = (
 )
 pwd = _env.PWD
 img_root = '/home/lerry/imgs'
-cache_dir = join(pwd, 'cache')
+cache_dir = join(pwd, 'static/.cache')
 
 db_file = join(pwd, 'img.db')
-table_name = join(pwd, 'img_list')
+table_name = 'img_list'
 db = web.database(dbn='sqlite', db=db_file)

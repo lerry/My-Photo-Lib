@@ -26,9 +26,10 @@ def scan_folder(dir_path):
 def resize_img(img_path, save_path, size=[640,480], quality=90):
     img = Image.open(img_path)
     img.thumbnail(size)
-    img.save(save_path, 'RGB', quality=quality)
+    img.save(save_path, quality=quality)
     
             
 if __name__ == '__main__':
-    print scan_folder('/home/lerry/Dropbox')
+    print scan_folder('static')
+    resize_img('/home/lerry/My-Photo-Lib/static/1.jpg','/home/lerry/My-Photo-Lib/static/2.jpg')
 

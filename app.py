@@ -8,7 +8,7 @@ import _env
 import web
 from os.path import join
 from config import render
-from misc import img_list
+from model import img_list
 
 urls = (
     '/(.*)', 'index',
