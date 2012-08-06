@@ -25,4 +25,4 @@ img_root = '/home/lerry/Dropbox'
 cache_dir = join(pwd, 'cache')
 
 db_file = join(pwd, 'img.db')
-db_table = join(pwd, 'img_list')
+table_name = join(pwd, 'img_list')
