@@ -6,6 +6,7 @@ Start from 2012-08-04 16:03
 '''
 import _env
 import os
+import web
 from os.path import join
 from web.contrib.template import render_jinja
 
@@ -26,3 +27,4 @@ cache_dir = join(pwd, 'cache')
 
 db_file = join(pwd, 'img.db')
 table_name = join(pwd, 'img_list')
+db = web.database(dbn='sqlite', db=db_file)
