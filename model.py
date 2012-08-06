@@ -27,9 +27,10 @@ def img_list(url):
     fpath = os.path.join(img_root, url)
     if os.path.isdir(fpath):
         dirs, imgs = scan_folder(fpath)
+        new_imgs = []
         for i in imgs:
-            i = Img(i)
-        return dirs, imgs
+            new_imgs.append(Img(i))
+        return dirs, new_imgs
     else:
         return ['', '']
 
@@ -52,7 +53,7 @@ def img_thumb(fpath):
         md5 = result[0]['md5']
     else:
         md5 = img_new(fpath)
-    return cache_dir+'/%s'%md5 
+    return cache_dir+ '/%s'%md5 + '.jpg' 
         
 if __name__ == '__main__':
     a = Img('/home/lerry/My-Photo-Lib/static/1.jpg')
