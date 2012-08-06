@@ -4,9 +4,16 @@
 {% block content %}
 <h1 id="title">我的相册</h1>
 <ul class="thumbnails">
-    {% for i in range(20) %}
+    {% for i in dirs %}
     <li class="span3">
         <a href="#" class="thumbnail">
+            <img src="/static/1.jpg" alt="">
+        </a>
+    </li>
+    {% endfor %}
+    {% for i in imgs %}
+    <li class="span3">
+        <a href="{{i}}" class="thumbnail">
             <img src="/static/1.jpg" alt="">
         </a>
     </li>

@@ -8,7 +8,21 @@ import _env
 
 import os
 import Image
-from config import img_type
+from config import img_type, img_root
+
+class img(object):
+    def __init__(self, fpath):
+        self.fpath = fpath
+
+    def link(self):
+        return fpath.split(img_root)
+
+def img_list(url):
+    fpath = os.path.join(img_root, url)
+    if os.path.isdir(fpath):
+        return scan_folder(fpath)
+    else:
+        return ['', '']
 
 def scan_folder(dir_path):
     dir_list = []

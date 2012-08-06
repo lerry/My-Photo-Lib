@@ -21,7 +21,7 @@ img_type = (
         'gif',
 )
 pwd = _env.PWD
-img_root = '/home/lerry/Dropbox'
+img_root = '/home/lerry/imgs'
 cache_dir = join(pwd, 'cache')
 
 db_file = join(pwd, 'img.db')

@@ -6,17 +6,20 @@ Start from 2012-08-04 16:00
 '''
 import _env
 import web
+from os.path import join
 from config import render
+from misc import img_list
 
 urls = (
-    '/', 'index',
+    '/(.*)', 'index',
 )
 
 app = web.application(urls, globals())
 
 class index:
-    def GET(self, name=''):
-        return render.index(name=name)
+    def GET(self, url):
+        dirs, imgs = img_list(url)
+        return render.index(dirs=dirs, imgs=imgs)
 
 
 if __name__ == '__main__':
