@@ -24,6 +24,8 @@ img_type = (
 pwd = _env.PWD
 img_root = '/home/lerry/imgs'
 cache_dir = join(pwd, 'static/.cache')
+if not os.path.exists(cache_dir):
+    os.mkdir(cache_dir)
 
 db_file = join(pwd, 'img.db')
 table_name = 'img_list'
