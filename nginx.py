@@ -29,16 +29,20 @@ server {
     #access_log /var/log/nginx/main.access_log info;
     #error_log /var/log/nginx/main.error_log info;
     }
-{% for i in ['', '/favicon.ico', '/robots.txt'] %}
+{% for i in ['', '/raw', '/favicon.ico', '/robots.txt'] %}
     location /static{{ i }} { 
         autoindex off;
+        {% if i != '/raw' %}
         alias {{ static_path }}{{ i }}; 
+        {% else %}
+        alias {{ IMG_ROOT }}; 
+        {% endif %}
     }
 {% endfor %}
 }
 '''
 
-tml = Template(NGINX_TMP).render(host=HOST, static_path=static_path).strip()
+tml = Template(NGINX_TMP).render(host=HOST,IMG_ROOT=IMG_ROOT, static_path=static_path).strip()
 
 if __name__ == '__main__':
     print tml

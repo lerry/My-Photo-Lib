@@ -22,9 +22,17 @@ class Dir(object):
 
 class Img(Dir):
 
-    @property 
+    @property
     def thumbnail(self):
         return img_thumb(self.fpath)[len(PWD):]
+
+    @property
+    def thumbnail_small(self):
+        return img_thumb(self.fpath, size=[320, 240], post_fix='_small')[len(PWD):]
+
+    @property
+    def link(self):
+        return '/static/raw' + super(Img, self).link
 
 
 def img_list(url):
@@ -41,23 +49,24 @@ def img_new(fpath):
     db.insert(TABLE_NAME, path=fpath, mtime=mtime, md5=md5)
     return md5
 
-def create_thumb(fpath, md5):
-    thumb_path = os.path.join(CACHE_DIR, md5+'.jpg')
+def create_thumb(fpath, thumb_path, size):
     if not os.path.isfile(thumb_path):
+        print fpath, thumb_path
         try:
-            resize_img(fpath, os.path.join(CACHE_DIR, md5+'.jpg')) 
+            resize_img(fpath, thumb_path, size) 
         except:
             print 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
             print 'something wrong with %s'%fpath
 
-def img_thumb(fpath):
+def img_thumb(fpath, size=[640, 480], post_fix=''):
     result = db.select(TABLE_NAME, what='md5', where='path="%s"'%fpath).list()
     if result:
         md5 = result[0]['md5']
     else:
         md5 = img_new(fpath)
-    create_thumb(fpath, md5)
-    return CACHE_DIR+ '/%s'%md5 + '.jpg' 
+    thumb_path = os.path.join(CACHE_DIR, md5+post_fix+'.jpg')
+    create_thumb(fpath, thumb_path, size)
+    return CACHE_DIR+ '/%s'%md5 + post_fix + '.jpg' 
         
 if __name__ == '__main__':
     a = Img('/home/lerry/My-Photo-Lib/static/1.jpg')

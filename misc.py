@@ -25,7 +25,7 @@ def scan_folder(dir_path):
             dir_list.append(Dir(full_path))
     return dir_list, img_list
 
-def resize_img(img_path, save_path, size=[640,480], quality=90):
+def resize_img(img_path, save_path, size=[640,480], quality=87):
     img = Image.open(img_path)
     img.thumbnail(size)
     img.save(save_path, quality=quality)
