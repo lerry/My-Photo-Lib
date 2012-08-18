@@ -21,12 +21,15 @@ img_type = (
         'png',
         'gif',
 )
-pwd = _env.PWD
-img_root = '/home/lerry/imgs'
-cache_dir = join(pwd, 'static/.cache')
-if not os.path.exists(cache_dir):
-    os.mkdir(cache_dir)
+PWD = _env.PWD
 
-db_file = join(pwd, 'img.db')
-table_name = 'img_list'
-db = web.database(dbn='sqlite', db=db_file)
+HOST = 'img.ldev.tk'
+IMG_ROOT = '/home/lerry/imgs'
+CACHE_DIR = join(PWD, 'static/.cache')
+DB_NAME = join(PWD, 'img.db')
+TABLE_NAME = 'img_list'
+db = web.database(dbn='sqlite', db=DB_NAME)
+
+if not os.path.exists(CACHE_DIR):
+    os.mkdir(CACHE_DIR)
+

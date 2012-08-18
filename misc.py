@@ -8,7 +8,7 @@ import _env
 
 import os
 import Image
-from config import img_type, img_root
+from config import img_type
 
 
 def scan_folder(dir_path):
