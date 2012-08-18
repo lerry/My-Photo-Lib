@@ -1,3 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+'''
+For:
+by Lerry  http://lerry.org
+Start from 2012-08-18 20:59
+Last edit at 2012-08-18 20:59
+'''
 server {
     server_name img.ldev.tk;
     listen 80;
