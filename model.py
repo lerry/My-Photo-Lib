@@ -11,6 +11,19 @@ import hashlib
 from config import db, IMG_ROOT, CACHE_DIR, TABLE_NAME, PWD
 from misc import resize_img, scan_folder
 
+CACHE_DICT = {}
+
+class InterCache(object):
+    def __init__(self, cache_dict):
+        self.cache = cache_dict
+
+    def get(self, k):
+        return self.cache.get(k)
+
+    def set(self, k, v):
+        self.cache[k] = v
+
+cache = InterCache(CACHE_DICT)
 
 class Dir(object):
     def __init__(self, fpath):
@@ -28,7 +41,7 @@ class Img(Dir):
 
     @property
     def thumbnail_small(self):
-        return img_thumb(self.fpath, size=[320, 240], post_fix='_small')[len(PWD):]
+        return img_thumb(self.fpath, size=[270], post_fix='_small')[len(PWD):]
 
     @property
     def link(self):
@@ -51,15 +64,17 @@ def img_new(fpath):
 
 def create_thumb(fpath, thumb_path, size):
     if not os.path.isfile(thumb_path):
-        print fpath, thumb_path
         try:
             resize_img(fpath, thumb_path, size) 
         except:
             print 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
             print 'something wrong with %s'%fpath
 
-def img_thumb(fpath, size=[640, 480], post_fix=''):
-    result = db.select(TABLE_NAME, what='md5', where='path="%s"'%fpath).list()
+def img_thumb(fpath, size, post_fix=''):
+    result = cache.get(fpath)
+    if not result:
+        result = db.select(TABLE_NAME, what='md5', where='path="%s"'%fpath).list()
+        cache.set(fpath, result)
     if result:
         md5 = result[0]['md5']
     else:
