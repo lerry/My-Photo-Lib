@@ -37,11 +37,11 @@ def cut_img(img_path, save_path, size=[270], quality=87):
     offset = (max(w, h) - side_len)/2
     if w > h:
         _size = [offset, 0, side_len+offset, side_len] 
-    if w < h:
+    elif w < h:
         _size = [0, offset, side_len, side_len+offset]
     else:
         _size = [0, 0, w, h]
-    img=img.crop(_size)
+    img = img.crop(_size)
     img = img.resize(size*2, Image.ANTIALIAS)
     img.save(save_path, quality=quality)
     

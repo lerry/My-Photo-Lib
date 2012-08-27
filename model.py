@@ -37,7 +37,7 @@ class Img(Dir):
 
     @property
     def thumbnail(self):
-        return img_thumb(self.fpath)[len(PWD):]
+        return img_thumb(self.fpath, size=[800, 600], post_fix='_800')[len(PWD):]
 
     @property
     def thumbnail_small(self):

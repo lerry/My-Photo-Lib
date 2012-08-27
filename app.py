@@ -11,19 +11,22 @@ from config import render
 from model import img_list
 
 urls = (
-    '/(.*)', 'index',
+    '/about', 'About',
+    '/(.*)', 'Index',
 )
 
-app = web.application(urls, globals())
+app = web.application(urls, globals(), autoreload=True)
 
-class index:
+class Index:
     def GET(self, url):
         dirs, imgs = img_list(url)
         return render.index(dirs=dirs, imgs=imgs)
 
+class About:
+    def GET(self):
+        return 'Powered by web.py, Image, Jinja2'
 
 if __name__ == '__main__':
     web.config.debug = True
     app.run()
-
 
