@@ -9,7 +9,7 @@
         <a href="{{i.link}}" class="thumbnail">
             <img src="/static/img/folder.png" alt="">
         </a>
-        <span>name</span>
+        <span>{{i.name}}</span>
     </li>
     {% endfor %}
     {% for i in imgs %}
@@ -17,7 +17,7 @@
         <a href="{{i.thumbnail}}" class="thumbnail" >
             <img src="/static/img/loading.png" class="thumb_img" rel="{{i.thumbnail_small}}" width="270" height="270" alt="">
         </a>
-        <span>name</span>
+        <span>{{i.name}}</span>
     </li>
     {% endfor %}
 </ul>

@@ -33,6 +33,11 @@ class Dir(object):
     def link(self):
         return self.fpath[len(IMG_ROOT):]
 
+    @property
+    def name(self):
+        return self.fpath.split(os.sep)[-1]
+
+
 class Img(Dir):
 
     @property

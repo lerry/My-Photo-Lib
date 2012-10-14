@@ -2,7 +2,7 @@ $(function(){
     var win = $(window),
         thumb = $('.thumb_img'),
         replace_src = function(img){
-            if(img.attr('src').indexOf('default')>0){
+            if(img.attr('src').indexOf('loading')>0){
                img.attr('src',img.attr('rel'))                               }
         }
     win.scroll(function(){

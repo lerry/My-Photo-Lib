@@ -9,22 +9,22 @@ import web
 from os.path import join
 from config import render
 from model import img_list
+from utils import route
 
-urls = (
-    '/about', 'About',
-    '/(.*)', 'Index',
-)
-
+urls = route.urls
 app = web.application(urls, globals(), autoreload=True)
 
+@route('/(.*)')
 class Index:
     def GET(self, url):
         dirs, imgs = img_list(url)
         return render.index(dirs=dirs, imgs=imgs)
 
+@route('/about')
 class About:
     def GET(self):
         return 'Powered by web.py, Image, Jinja2'
+
 
 if __name__ == '__main__':
     web.config.debug = True
