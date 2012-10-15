@@ -12,7 +12,7 @@ from config import img_type
 
 
 def scan_folder(dir_path):
-    from model import Dir, Img
+    from models.main import Dir, Img
     dir_list = []
     img_list = []
     for i in os.listdir(dir_path):
