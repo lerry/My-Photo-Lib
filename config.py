@@ -11,8 +11,8 @@ from os.path import join
 from web.contrib.template import render_jinja
 
 render = render_jinja(
-    'template', 
-    encoding = 'utf-8',
+    'template',
+    encoding='utf-8',
 )
 
 img_type = (
@@ -23,7 +23,7 @@ img_type = (
 )
 PWD = _env.PWD
 
-HOST = 'img.ldev.tk'
+HOST = 'img.lerry.tk'
 IMG_ROOT = '/home/lerry/imgs'
 CACHE_DIR = join(PWD, 'static/.cache')
 DB_NAME = join(PWD, 'img.db')
