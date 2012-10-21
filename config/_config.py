@@ -1,20 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-'''
-by Lerry  http://lerry.org
-Start from 2012-08-04 16:03
-'''
 import _env
 import os
 import web
 from os.path import join
+from redis import Redis, StrictRedis
 from web.contrib.template import render_jinja
+
 
 render = render_jinja(
     'template',
     encoding='utf-8',
 )
-
 img_type = (
         'jpg',
         'bmp',
@@ -22,6 +19,9 @@ img_type = (
         'gif',
 )
 PWD = _env.PWD
+
+redis = StrictRedis(host='localhost', port=6379, db=0)
+
 
 HOST = 'img.lerry.tk'
 IMG_ROOT = '/home/lerry/imgs'

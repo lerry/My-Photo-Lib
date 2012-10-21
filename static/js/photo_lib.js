@@ -18,20 +18,22 @@ $(function(){
 })
 
 $(document).ready(function() {
-    $("a.thumbnail").fancybox({
-        'overlayShow'   : false,
-        'transitionIn'  : 'elastic',
-        'transitionOut' : 'elastic'
-    });
-
-//    $("a[class=thumbnail]").fancybox({
-//        'transitionIn'      : 'none',
-//        'transitionOut'     : 'none',
-//        'titlePosition'     : 'over',
-//        'titleFormat'       : function(title, currentArray, currentIndex, currentOpts) {
-//            return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
-//        }
+//    $("a.img_url").fancybox({
+//        'overlayShow'   : false,
+//        'transitionIn'  : 'elastic',
+//        'transitionOut' : 'elastic'
 //    });
-//
-}
-)
+
+    $("a[rel=img_group]").fancybox({
+        'transitionIn'      : 'none',
+        'transitionOut'     : 'none',
+        'titlePosition'     : 'over',
+        'titleFormat'       : function(title, currentArray, currentIndex, currentOpts) {
+            return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+        }
+    });
+//    $('li.span3 img').click(function(){
+//        var comment = $('.comment-wrapper');
+//        comment.show()
+//    })
+})

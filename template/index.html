@@ -14,7 +14,7 @@
     {% endfor %}
     {% for i in imgs %}
     <li class="span3">
-        <a href="{{i.thumbnail}}" class="thumbnail" >
+        <a href="{{i.thumbnail}}" rel="img_group"  class="thumbnail img_url" title="{{i.name}}" >
             <img src="/static/img/loading.png" class="thumb_img" rel="{{i.thumbnail_small}}" width="270" height="270" alt="">
         </a>
         <span>{{i.name}}</span>

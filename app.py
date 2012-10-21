@@ -3,7 +3,7 @@
 import _env
 import web
 from app_list import *
-from utils import route
+from views._base import route
 
 urls = route.urls
 app = web.application(urls, globals(), autoreload=True)
