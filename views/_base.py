@@ -2,17 +2,41 @@
 # -*- coding: utf-8 -*-
 import web
 from lib.route import Route
-from lib.session import session_set, session_get, session_rm
+from lib.session import session_new, session_set, session_get, session_rm
 
 route = Route()
 
-def login(self, uid):
-    web.cookie.set('S', session_set(uid))
+def logout(self, uid):
+    s = web.cookies().get('S')
+    session_rm(s)
 
-class LoginView:
+class View(object):
     def __init__(self):
-        if not web.cookies().get('S'):
-             raise web.seeother('/login')
+        self.login = False
+
+    @property
+    def login(self):
+        s = web.cookies().get('S')
+        uid = session_get(s)
+        return True if uid else False
+
+    def redirect(self, url):
+        raise web.seeother(url)
+
+class LoginView(View):
+    def __init__(self):
+        s = web.cookies().get('S')
+        uid = session_get(s)
+        if uid:
+            self.uid = uid
+        else:
+            self.redirect('/login')
+
+class NoLoginView(View):
+    def __init__(self):
+        super(NoLoginView, self).__init__()
+        if self.login:
+            self.redirect('/')
 
 def my_loadhook():
     print "my load hook"

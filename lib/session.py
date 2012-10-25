@@ -16,7 +16,6 @@ def session_set(uid, s):
 
 def session_rm(s):
     redis.hdel(KEY_SESSION, s)
-    Session.set(id, None)
 
 def session_flush():
     redis.delete(KEY_SESSION)

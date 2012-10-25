@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import _env
 import web
-from app_list import *
+from _app_list import *
 from views._base import route
 
 urls = route.urls
