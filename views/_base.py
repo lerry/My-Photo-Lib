@@ -11,8 +11,6 @@ def logout(self, uid):
     session_rm(s)
 
 class View(object):
-    def __init__(self):
-        self.login = False
 
     @property
     def login(self):
