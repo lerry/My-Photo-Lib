@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import web
 from lib.route import Route
-from lib.session import session_new, session_set, session_get, session_rm
+from lib.session import session_new, id_by_session, session_rm
 
 route = Route()
 
