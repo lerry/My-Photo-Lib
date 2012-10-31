@@ -4,8 +4,9 @@ import _env
 import os
 import web
 from os.path import join
-from redis import Redis, StrictRedis
+from redis import StrictRedis
 from web.contrib.template import render_jinja
+from lib.redis_key import RedisKey
 
 
 render = render_jinja(
@@ -21,7 +22,7 @@ img_type = (
 PWD = _env.PWD
 
 redis = StrictRedis(host='localhost', port=6379, db=0)
-
+redis_key = RedisKey(redis)
 
 HOST = 'img.lerry.tk'
 IMG_ROOT = '/home/lerry/imgs'
@@ -30,6 +31,6 @@ DB_NAME = join(PWD, 'img.db')
 TABLE_NAME = 'img_list'
 db = web.database(dbn='sqlite', db=DB_NAME)
 
-if not os.path.exists(CACHE_DIR):
-    os.mkdir(CACHE_DIR)
+#if not os.path.exists(CACHE_DIR):
+#    os.mkdir(CACHE_DIR)
 
